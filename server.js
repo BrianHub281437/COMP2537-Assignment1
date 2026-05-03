@@ -44,7 +44,7 @@ app.use(mongoSanitize({replaceWith: '%'}));
 app.use(express.static('public'));
 
 var mongoStore = MongoStore.create({
-    mongoUrl: `mongodb+srv://${mongodb_user}:${mongodb_password}@${mongodb_host}/${mongodb_session_database}?tls=true&tlsInsecure=true`,
+    mongoUrl: `mongodb+srv://${mongodb_user}:${mongodb_password}@${mongodb_host}/${mongodb_session_database}?retryWrites=true&w=majority`,
     crypto: {
         secret: mongodb_session_secret
     }
