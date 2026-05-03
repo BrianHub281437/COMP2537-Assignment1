@@ -44,7 +44,7 @@ app.use(mongoSanitize({replaceWith: '%'}));
 app.use(express.static('public'));
 
 var mongoStore = MongoStore.create({
-    mongoUrl: `mongodb+srv://${mongodb_user}:${mongodb_password}@${mongodb_host}/${mongodb_session_database}?retryWrites=true&w=majority`,
+    mongoUrl: `mongodb+srv://${mongodb_user}:${mongodb_password}@${mongodb_host}/${mongodb_session_database}?tls=true&tlsInsecure=true`,
     crypto: {
         secret: mongodb_session_secret
     }
@@ -62,9 +62,7 @@ app.use(session({
     }
 }));
 
-/* ============================================================
-   ROUTES
-   ============================================================ */
+// Routes
 
 app.get('/', (req, res) => {
     res.render('home', {
@@ -145,7 +143,7 @@ app.get('/members', (req, res) => {
         return;
     }
 
-    const images = ['images.jpg', 'sad-orangutang-zoo-26546600.webp', 'the-bornean-orangutan-pongo-pygmaeus-is-a-species-of-orangutan-native-to-the-island-of-borneo-together-with-the-sumatran-orangutan-pongo-abelii-2GAJ4K7.jpg'];
+    const images = ['image1.jpg', 'image2.jpg', 'image3.jpg'];
     const randomImage = images[Math.floor(Math.random() * images.length)];
 
     res.render('members', {name: req.session.name, image: randomImage});
