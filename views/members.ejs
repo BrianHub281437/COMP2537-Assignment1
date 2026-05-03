@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Members</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Members Area</h1>
+    <p class="greeting">Hello, <%= name %>!</p>
+    <img
+      src="/<%= image %>"
+      alt="Random member image"
+      class="member-image"
+      onerror="this.style.display='none'; document.getElementById('placeholder').style.display='flex';"
+    >
+    <div id="placeholder" class="image-placeholder" style="display: none;">
+      Image not available
+    </div>
+    <div class="btn-group">
+      <a href="/members" class="btn btn-secondary">Refresh Image</a>
+      <a href="/logout" class="btn btn-danger">Sign Out</a>
+    </div>
+  </div>
+</body>
+</html>
